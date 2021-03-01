@@ -1,0 +1,16 @@
+.container-fluid.px-0
+  nav.navbar.navbar-dark.bg-dark
+    .navbar-brand cropperjs-demo
+  label.m-0.btn.btn-primary.btn-sm(@change="loadImage") 
+    input#loadImage(type="file" accept=".jpg, .png" plain style="display:none;")
+    | 讀取圖片
+  template(v-if="imageUrl")
+    button.btn.btn-primary.btn-sm.m-0(@click="crop")
+      b-icon-crop
+    // ref https://github.com/fengyuanchen/cropperjs#options
+    cropper(ref="cropper" :src="imageUrl" :options=`{
+        responsive: true,
+        guides: true,
+        aspectRatio:1,
+        zoomable: false
+      }`)
